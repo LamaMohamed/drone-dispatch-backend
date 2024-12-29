@@ -1,0 +1,61 @@
+# Maven specific files
+target/
+*.log
+*.war
+*.ear
+*.jar
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# IDE specific files
+.idea/
+*.iml
+*.iws
+.vscode/
+*.class
+*.project
+*.settings/
+*.classpath
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.stackdump
+ehthumbs.db
+
+# Spring Boot specific files
+.env
+*.properties~
+*.yml~
+
+# Logs
+logs/
+*.log
+
+# Test reports
+test-output/
+*.out
+*.err
+
+# Exclude JetBrains IDEs like IntelliJ IDEA's configuration files
+.idea/
+
+# Eclipse specific
+*.classpath
+*.project
+.settings/
+
+# Exclude build directories
+bin/
+build/
+
+# Exclude dependency directories
+lib/
+
+# Exclude runtime files
+hs_err_pid*

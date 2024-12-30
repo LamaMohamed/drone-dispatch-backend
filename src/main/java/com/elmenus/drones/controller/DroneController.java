@@ -4,7 +4,6 @@ package com.elmenus.drones.controller;
 import com.elmenus.drones.model.dto.DroneDTO;
 import com.elmenus.drones.model.dto.MedicationDTO;
 import com.elmenus.drones.service.DroneService;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("${api.drone}")
 @Slf4j
-@Tag(name = "User Management", description = "APIs for managing users")
-
 public class DroneController {
 
     @Autowired

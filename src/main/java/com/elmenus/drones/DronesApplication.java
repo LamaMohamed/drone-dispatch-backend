@@ -8,9 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-@OpenAPIDefinition(servers = {
-		@Server(url = "/", description = "Default Server URL")
-})
 public class DronesApplication {
 
 	public static void main(String[] args) {

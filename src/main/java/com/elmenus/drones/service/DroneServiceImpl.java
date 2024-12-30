@@ -34,6 +34,7 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public DroneDTO registerDrone(DroneDTO droneDTO) {
+        log.info("map and save entity in database");
         Drone drone = droneMapper.toEntity(droneDTO, Drone.class);
         Drone savedDrone = droneRepository.save(drone);
         return droneMapper.toDTO(savedDrone, DroneDTO.class);
@@ -41,14 +42,16 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public void loadDrone(Long droneId, List<MedicationDTO> medications) {
+        log.info("Load drone <{}> with medications",droneId);
         Drone drone = droneRepository.findById(droneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Drone", droneId.toString()));
 
+        log.info("validate before loading");
         droneValidator.validateDroneForLoading(drone, medications);
 
         List<Medication> medicationEntities = mapAndAssignMedicationsToDrone(medications, drone);
 
-
+        log.info("save loaded medications in database");
         medicationRepository.saveAll(medicationEntities);
         drone.setState(State.LOADING);
         droneRepository.save(drone);
@@ -56,12 +59,16 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public List<MedicationDTO> getLoadedMedications(Long droneId) {
+        log.info("get loaded medications for {}",droneId);
+
         return medicationRepository.findByDroneId(droneId)
                 .stream().map(medication -> medicationMapper.toDTO(medication, MedicationDTO.class)).toList();
     }
 
     @Override
     public List<DroneDTO> getAvailableDrones() {
+        log.info("get available drones for loading");
+
         return droneRepository.findByStateInAndBatteryCapacityGreaterThan(
                         List.of(State.IDLE, State.RETURNING), 25)
                 .stream()
@@ -71,6 +78,8 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public int getDroneBatteryLevel(Long droneId) {
+        log.info("get drone <{}> battery level",droneId);
+
         return droneRepository.findById(droneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Drone", droneId.toString()))
                 .getBatteryCapacity();

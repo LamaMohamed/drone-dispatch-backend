@@ -6,11 +6,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "medication")
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class Medication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +26,8 @@ public class Medication {
     @Lob
     @Column(nullable = false)
     private byte[] image;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "drone_id", nullable = false)
+    private Drone drone;
 }

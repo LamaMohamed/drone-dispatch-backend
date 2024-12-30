@@ -1,5 +1,6 @@
 package com.elmenus.drones.model.dto;
 
+import com.elmenus.drones.model.entity.Drone;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MedicationDTO {
 
+    private Long id;
+    
     @NotNull(message = "Name is mandatory")
     @Pattern(regexp = "^[A-Za-z0-9-_]+$", message = "Invalid name format")
     private String name;

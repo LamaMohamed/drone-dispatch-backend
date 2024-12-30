@@ -6,6 +6,7 @@ import com.elmenus.drones.model.dto.MedicationDTO;
 import java.util.List;
 
 public interface DroneService {
+
     /**
      * Registers a new drone.
      * @param droneDTO The drone details.

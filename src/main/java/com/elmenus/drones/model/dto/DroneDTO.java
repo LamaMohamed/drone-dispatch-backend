@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DroneDTO {
+    private Long id;
+
     @NotBlank(message = "Serial number is mandatory")
     @Size(max = 100, message = "Serial number must not exceed 100 characters")
     private String serialNumber;

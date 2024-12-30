@@ -3,15 +3,17 @@ package com.elmenus.drones.shared.exception;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 
+import java.util.Date;
+
 @Data
 public class ErrorResponse {
-    private String message;
-    private String details;
-    private HttpStatus status;
+    private final String message;
+    private final String details;
+    private final Date timestamp;
 
-    public ErrorResponse(String message, String details, HttpStatus status) {
+    public ErrorResponse(Date timestamp, String message, String details) {
         this.message = message;
         this.details = details;
-        this.status = status;
+        this.timestamp = timestamp;
     }
 }

@@ -7,18 +7,18 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "drone_battery_audit")
-@Getter
-@Setter
+@Table(name = "drone_battery_audit_log")
+@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class DroneBatteryAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "drone_id", nullable = false)
+    private Long droneId;
+
+    @Column(name = "drone_serial_number", nullable = false)
     private String droneSerialNumber;
 
     @Column(nullable = false)
